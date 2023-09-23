@@ -1,35 +1,44 @@
+import { Fish } from "./FunctionalApp";
 import "./styles/game-board.css";
-import { Images } from "../../assets/Images";
 
-const initialFishes = [
-  {
-    name: "trout",
-    url: Images.trout,
-  },
-  {
-    name: "salmon",
-    url: Images.salmon,
-  },
-  {
-    name: "tuna",
-    url: Images.tuna,
-  },
-  {
-    name: "shark",
-    url: Images.shark,
-  },
-];
+type GameBoardProps = {
+  nextFishToName: Fish;
+  setUserInput: (value: string) => void;
+  userInput: string;
+  handleAnswer: () => void;
+  removeFish: () => void;
+};
 
-export function FunctionalGameBoard() {
-  const nextFishToName = initialFishes[0];
+export function FunctionalGameBoard({
+  handleAnswer,
+  nextFishToName,
+  setUserInput,
+  userInput,
+  removeFish,
+}: GameBoardProps) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleAnswer();
+    removeFish();
+    setUserInput("");
+  };
+
   return (
     <div id="game-board">
       <div id="fish-container">
         <img src={nextFishToName.url} alt={nextFishToName.name} />
       </div>
-      <form id="fish-guess-form">
+      <form onSubmit={handleSubmit} id="fish-guess-form">
         <label htmlFor="fish-guess">What kind of fish is this?</label>
-        <input type="text" name="fish-guess" />
+        <input
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          type="text"
+          name="fish-guess"
+          id="fish-guess"
+          placeholder="Enter your guess here"
+          aria-label="Fish guess input"
+        />
         <input type="submit" />
       </form>
     </div>

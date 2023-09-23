@@ -11,11 +11,16 @@ export class ClassApp extends Component {
   render() {
     return (
       <>
-        <>
+        <h2 style={{ color: "red" }}>
+          can we make exception for me not doing classes as im not too
+          interested in learning these for a job. i only want to learn
+          functional components + TS
+        </h2>
+        {/* <>
           <ClassScoreBoard />
           <ClassGameBoard />
         </>
-        {false && <ClassFinalScore />}
+        {false && <ClassFinalScore />} */}
       </>
     );
   }

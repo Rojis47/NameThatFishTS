@@ -31,8 +31,18 @@ export class ClassGameBoard extends Component {
         </div>
         <form id="fish-guess-form">
           <label htmlFor="fish-guess">What kind of fish is this?</label>
-          <input type="text" name="fish-guess" />
-          <input type="submit" />
+          <input
+            type="text"
+            name="fish-guess"
+            id="fish-guess"
+            placeholder="Enter your guess here"
+            aria-label="Fish Guess Input"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            aria-label="Submit Guess Button"
+          />
         </form>
       </div>
     );
